@@ -323,6 +323,7 @@ hypre_BoomerAMGCreate( void )
    base     = (hypre_Solver*) amg_data;
 
    /* Set base solver function pointers */
+   hypre_SolverDataCompSetup(base)   = (HYPRE_PtrToSolverFcn)  HYPRE_BoomerAMGDataCompSetup;
    hypre_SolverSetup(base)   = (HYPRE_PtrToSolverFcn)  HYPRE_BoomerAMGSetup;
    hypre_SolverSolve(base)   = (HYPRE_PtrToSolverFcn)  HYPRE_BoomerAMGSolve;
    hypre_SolverDestroy(base) = (HYPRE_PtrToDestroyFcn) HYPRE_BoomerAMGDestroy;
