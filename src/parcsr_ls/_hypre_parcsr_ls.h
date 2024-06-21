@@ -1834,6 +1834,8 @@ HYPRE_Int HYPRE_AMSFEIDestroy ( HYPRE_Solver solver );
 /* HYPRE_parcsr_amg.c */
 HYPRE_Int HYPRE_BoomerAMGCreate ( HYPRE_Solver *solver );
 HYPRE_Int HYPRE_BoomerAMGDestroy ( HYPRE_Solver solver );
+HYPRE_Int HYPRE_BoomerAMGDataCompSetup( HYPRE_Solver solver, HYPRE_ParCSRMatrix A, HYPRE_ParVector b, 
+                                        HYPRE_ParVector x );
 HYPRE_Int HYPRE_BoomerAMGSetup ( HYPRE_Solver solver, HYPRE_ParCSRMatrix A, HYPRE_ParVector b,
                                  HYPRE_ParVector x );
 HYPRE_Int HYPRE_BoomerAMGSolve ( HYPRE_Solver solver, HYPRE_ParCSRMatrix A, HYPRE_ParVector b,
@@ -2677,6 +2679,10 @@ HYPRE_Int hypre_BoomerAMGSetFPoints( void *data, HYPRE_Int isolated, HYPRE_Int n
                                      HYPRE_BigInt *indices );
 HYPRE_Int hypre_BoomerAMGSetCumNnzAP ( void *data, HYPRE_Real cum_nnz_AP );
 HYPRE_Int hypre_BoomerAMGGetCumNnzAP ( void *data, HYPRE_Real *cum_nnz_AP );
+
+/* par_amg_DataComp_setup.c */
+HYPRE_Int hypre_BoomerAMGDataCompSetup( void *amg_vdata, hypre_ParCSRMatrix *A, hypre_ParVector  *f,
+                                        hypre_ParVector *u );
 
 /* par_amg_setup.c */
 HYPRE_Int hypre_BoomerAMGSetup ( void *amg_vdata, hypre_ParCSRMatrix *A, hypre_ParVector *f,
@@ -4352,3 +4358,4 @@ HYPRE_Int hypre_FSAISetupDevice( void *fsai_vdata, hypre_ParCSRMatrix *A,
 #endif
 
 #endif
+
