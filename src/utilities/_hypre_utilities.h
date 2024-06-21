@@ -238,6 +238,7 @@ typedef double                 hypre_double;
 
 typedef struct
 {
+   HYPRE_PtrToSolverFcn   setupDataComp;
    HYPRE_PtrToSolverFcn   setup;
    HYPRE_PtrToSolverFcn   solve;
    HYPRE_PtrToDestroyFcn  destroy;
@@ -248,9 +249,10 @@ typedef struct
  * Accessor functions for the hypre_Solver structure
  *--------------------------------------------------------------------------*/
 
-#define hypre_SolverSetup(data)       ((data) -> setup)
-#define hypre_SolverSolve(data)       ((data) -> solve)
-#define hypre_SolverDestroy(data)     ((data) -> destroy)
+#define hypre_SolverDataCompSetup(data)   ((data) -> setupDataComp)
+#define hypre_SolverSetup(data)           ((data) -> setup)
+#define hypre_SolverSolve(data)           ((data) -> solve)
+#define hypre_SolverDestroy(data)         ((data) -> destroy)
 
 #endif /* HYPRE_BASE_HEADER */
 /******************************************************************************
