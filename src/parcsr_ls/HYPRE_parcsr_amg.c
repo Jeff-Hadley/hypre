@@ -34,6 +34,28 @@ HYPRE_BoomerAMGDestroy( HYPRE_Solver solver )
    return ( hypre_BoomerAMGDestroy( (void *) solver ) );
 }
 
+
+/*--------------------------------------------------------------------------
+ * HYPRE_BoomerAMGDataCompSetup
+ *--------------------------------------------------------------------------*/
+HYPRE_Int
+HYPRE_BoomerAMGDataCompSetup( HYPRE_Solver solver,
+                              HYPRE_ParCSRMatrix A,
+                              HYPRE_ParVector b,
+                              HYPRE_ParVector x      )
+{
+   if (!A)
+   {
+      hypre_error_in_arg(2);
+      return hypre_error_flag;
+   }
+
+   return ( hypre_BoomerAMGDataCompSetup( (void *) solver,
+                                  (hypre_ParCSRMatrix *) A,
+                                  (hypre_ParVector *) b,
+                                  (hypre_ParVector *) x ) );
+}
+
 /*--------------------------------------------------------------------------
  * HYPRE_BoomerAMGSetup
  *--------------------------------------------------------------------------*/
